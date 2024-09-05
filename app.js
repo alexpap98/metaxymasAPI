@@ -49,15 +49,10 @@ app.get('/images/:path', (req, res) => {
         res.sendFile(path.join(__dirname, 'public', 'index.html'));
     }
 });
-
-mongoose.connect(uri).then(() => {
-    console.log("Connected to Database");
-    app.listen(port, () => {
-        console.log(`Menu server running on port ${port}`)
-    })
-}).catch(() => {
-    console.log("Connection Failed ");
+app.listen(port, () => {
+    console.log(`Menu server running on port ${port}`)
 })
+
 
 
 
