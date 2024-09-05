@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
 require('dotenv').config()
 const uri = process.env.URI;
+// const uri = process.env.URIme;
 const Item = require('./models/menu.model.js')
 const cors = require('cors');
 const express = require('express');
 const path = require('path');
 const fs = require("fs");
+const test = require('./test.json')
+const port = 80;
 
 
-const port = 8080;
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -49,10 +51,15 @@ app.get('/images/:path', (req, res) => {
         res.sendFile(path.join(__dirname, 'public', 'index.html'));
     }
 });
-app.listen(port, () => {
-    console.log(`Menu server running on port ${port}`)
-})
 
+mongoose.connect(uri).then(() => {
+    console.log("Connected to Database");
+    app.listen(port, () => {
+        console.log(`Menu server running on port ${port}`)
+    })
+}).catch(() => {
+    console.log("Connection Failed ");
+})
 
 
 
