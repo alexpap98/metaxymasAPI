@@ -1,14 +1,12 @@
 const mongoose = require('mongoose');
 require('dotenv').config()
 const uri = process.env.URI;
-// const uri = process.env.URIme;
 const Item = require('./models/menu.model.js')
 const cors = require('cors');
 const express = require('express');
 const path = require('path');
 const fs = require("fs");
-const test = require('./test.json')
-const port = 80;
+const port = process.env.PORT;
 
 
 const app = express();
