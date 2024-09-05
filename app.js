@@ -51,12 +51,6 @@ app.get('/images/:path', (req, res) => {
 });
 app.listen(port, () => {
     console.log(`Menu server running on port ${port}`)
-    console.log(uri);
-    mongoose.connect(uri).then(() => {
-        console.log("Connected to Database");
-    }).catch(() => {
-        console.log("Connection Failed ");
-    })
 })
 
 
