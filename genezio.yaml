@@ -2,7 +2,7 @@ frontend:
     path: ./
     publish: ""
     scripts:
-        build: npm run build
+        build: CI= npm run build
         deploy: npm install
     subdomain: metaxymasAPI
 name: metaxymasAPI
