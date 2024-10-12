@@ -63,14 +63,14 @@ app.post('/login', async (req, res) => {
 
 
 app.post('/updateItem/:id', authentication, async (req, res) => {
-    const itemId = req.params.id;
+    const categoryID = req.params.id;
     const newItem = req.body.newItem;
     const itemID = newItem._id;
     console.log(req.body);
-    console.log(itemId);
+    console.log(itemID);
 
     try {
-        const item = await Item.findById(itemId);
+        const item = await Item.findById(categoryID);
         if (!item) {
             console.log('Item not found');
             return;
@@ -84,7 +84,7 @@ app.post('/updateItem/:id', authentication, async (req, res) => {
         }
 
         const category = await item.save();
-        res.json({ message: 'Item added or updated successfully', category: category });
+        res.json({ message: 'Item added or updated successfully', category: item });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "Error updating or adding item" });
