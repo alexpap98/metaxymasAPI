@@ -165,7 +165,10 @@ mongoose.connect(uri).then(() => {
     app.listen(port, () => {
         console.log(`Menu server running on port ${port}`)
     })
-}).catch(() => {
+}).catch((error) => {
+    console.log('====================================');
+    console.log(error);
+    console.log('====================================');
     console.log("Connection Failed ");
 })
 
