@@ -32,7 +32,7 @@ const sendToPHPServer = async (req) => {
             fetch(`http://storage.metaximas.gr/index.php/${req.params.folder}`, {
                 method: 'POST',
                 body: formData,
-                headers: { 'Authorization': `${process.env.JWT}` }
+                headers: { 'Authorization': `${req.signedToken}` }
             })
                 .then((response) => {
                     console.log("first");
@@ -66,7 +66,7 @@ const deleteFileFromPHPServer = async (req) => {
     return new Promise((resolve, reject) => {
         fetch(`http://storage.metaximas.gr/index.php/${folderPath}/${fileName}`, {
             method: 'DELETE',
-            headers: { 'Authorization': `${process.env.JWT}` }
+            headers: { 'Authorization': `${req.signedToken}` }
         })
             .then((response) => {
                 if (!response.ok) {
