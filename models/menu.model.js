@@ -30,6 +30,10 @@ const ItemDetailsSchema = new mongoose.Schema({
     image: {
         type: String,
         required: false
+    },
+    isFrozen:{
+        type: Boolean,
+        required: false
     }
 });
 

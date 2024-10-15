@@ -37,13 +37,10 @@ app.get('/menu', async (req, res) => {
 
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    console.log('====================================');
-    console.log(username, password);
-    console.log('====================================');
     try {
         // Find the user by username and password
         const user = await Users.findOne({ username: username, password: password });
-
+        const AllUsers = await Users.findOne({});
         if (!user) {
             return res.status(404).send('User not found or incorrect password');
         }
@@ -103,9 +100,6 @@ app.delete('/delete/:id/:itemID', authentication, async (req, res) => {
             return;
         }
 
-        // Filter out the item with the matching key
-        console.log(categoryID);
-        console.log(itemID);
 
         item.items = item.items.filter(i => {
             console.log(i._id.toString(), itemID.toString());
